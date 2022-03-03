@@ -7,10 +7,11 @@ export RUN=/etc/service/podman-postgres/run
 
 sudo mkdir -p ${RUN%/*}
 
-cat | sudo tee -a $RUN << THATSALL
+cat > /tmp/run << THATSALL
 #! /bin/bash
 exec podman run --rm -e POSTGRES_PASSWORD=mysecretpassword --network host docker.io/library/postgres postgres
 THATSALL
 
+sudo cp /tmp/run $RUN
 sudo chmod +x $RUN
 
