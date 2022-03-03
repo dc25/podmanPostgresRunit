@@ -5,7 +5,7 @@ sudo apt install -y podman runit runit-systemd
 
 export RUN=/etc/service/podman-postgres/run
 
-mkdir -p ${RUN%/*}
+sudo mkdir -p ${RUN%/*}
 
 sudo cat > $RUN << thatsall
 #! /bin/bash
